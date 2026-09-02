@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 213 65% 13%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 221 83% 53%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.5rem;
+
+    /* Infolink Enterprise Design System (Phase 9) */
+    --ink-primary: #0B1F3A;    /* deep navy — primary brand */
+    --ink-secondary: #2563EB; /* blue — primary interactive color */
+    --ink-accent: #3B82F6;    /* lighter blue — accents, highlights */
+    --ink-bg: #FFFFFF;
+    --ink-bg-subtle: #F8FAFC;
+    --ink-bg-muted: #F1F5F9;
+    --ink-text-strong: #0F172A;
+    --ink-text-body: #475569;
+    --ink-text-soft: #64748B;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-brand {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #0B1F3A 0%, #0F2A4A 45%, #14335C 100%);
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #2563EB, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .btn-primary {
+    @apply bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-blue-50 text-[#2563EB] font-semibold px-6 py-3 rounded-lg border-2 border-[#2563EB] transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-slate-100 text-[#0B1F3A] font-semibold px-6 py-3 rounded-lg transition-all duration-200;
+  }
+
+  .badge-brand {
+    @apply bg-blue-50 text-blue-700 font-medium text-sm px-3 py-1 rounded-full;
+  }
+
+  .section-label {
+    @apply text-[#2563EB] font-semibold text-sm uppercase tracking-widest mb-3;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B1F3A] leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-gray-600 text-lg leading-relaxed max-w-3xl;
+  }
+}
+
+/* Phase 12 — Enterprise visual polish. Additive design tokens only:
+   standardized section backgrounds/spacing, a premium card treatment,
+   and quieter glow/gradient utilities. Nothing above this line was
+   changed, and no component logic, data, routes, or forms are touched. */
+@layer components {
+  /* Standardized three-tone section rhythm (white / light gray / navy)
+     used to break up long runs of white and build clearer hierarchy. */
+  .section-bg-white {
+    @apply bg-white;
+  }
+
+  .section-bg-gray {
+    background-color: #F8FAFC;
+  }
+
+  /* Phase 13B — second light-neutral tone, used alongside section-bg-gray
+     to add a bit more visual separation to the homepage's white/gray
+     rhythm without introducing a new color outside the existing palette. */
+  .section-bg-gray-alt {
+    background-color: #F1F5F9;
+  }
+
+  .section-bg-navy {
+    background-color: #0B1F3A;
+    color: #E2E8F0;
+  }
+  .section-bg-navy .section-title,
+  .section-bg-navy h2,
+  .section-bg-navy h3 {
+    @apply text-white;
+  }
+  .section-bg-navy .section-subtitle {
+    color: #CBD5E1;
+  }
+
+  /* Consistent section rhythm — replaces ad hoc py-14/py-16/py-20 usage. */
+  .section-spacing {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  /* Premium card: quieter than the old glow-on-hover treatment —
+     restrained lift, neutral shadow, no colored halo. */
+  .card-premium {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300;
+  }
+  .card-premium:hover {
+    @apply -translate-y-0.5 border-slate-300 shadow-lg;
+  }
+
+  /* Dark-surface counterpart for cards placed on a navy section. */
+  .card-premium-dark {
+    @apply rounded-2xl border border-white/10 bg-white/[0.06] shadow-sm backdrop-blur-sm transition-all duration-300;
+  }
+  .card-premium-dark:hover {
+    @apply -translate-y-0.5 border-white/20 bg-white/[0.09];
+  }
+
+  /* Flat, solid icon chip — replaces the navy-to-blue gradient chip used
+     across service/industry/process cards for a calmer, less "startup"
+     glow-heavy look while keeping the brand navy identity. */
+  .icon-chip {
+    @apply flex h-14 w-14 items-center justify-center rounded-xl bg-[#0B1F3A] shadow-sm transition-transform duration-300;
+  }
+  .icon-chip svg {
+    @apply text-white;
+  }
+
+  /* Subtle decorative glow — smaller, lower-opacity replacement for the
+     large blur-3xl "startup glow" circles used throughout. */
+  .glow-subtle {
+    @apply pointer-events-none absolute rounded-full opacity-10 blur-2xl;
+  }
+}
+
+/* Infolink Phase 1 — additive premium/enterprise utilities.
+   Namespaced and additive only: nothing above this line was changed,
+   so every existing page keeps its current styling untouched. */
+@layer components {
+  .grid-lines {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, .12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, .12) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .animate-float { animation: infolink-float 6s ease-in-out infinite; }
+  .animate-pulse-soft { animation: infolink-pulse-soft 4s ease-in-out infinite; }
+}
+
+@keyframes infolink-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes infolink-pulse-soft {
+  0%, 100% { opacity: .35; transform: scale(.95); }
+  50% { opacity: .7; transform: scale(1); }
+}
+/* Trusted Partners Marquee */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 70s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 70s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B1F3A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* Floating button animations */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.pulse-animation::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-ring 2s ease-out infinite;
+  z-index: -1;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Override for layout transitions */
+.transition-transform {
+  transition-property: transform !important;
+}
+
+/* Hero gradient overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(11, 31, 58, 0.92) 0%,
+    rgba(11, 31, 58, 0.75) 50%,
+    rgba(11, 31, 58, 0.3) 100%
+  );
+}
+
+/* Process step connector */
+.step-connector::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #0B1F3A, #2563EB);
+  z-index: 0;
+}
+
+/* FAQ accordion custom */
+.faq-item {
+  @apply border border-gray-200 rounded-xl overflow-hidden mb-3;
+}
+
+/* Form focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Phase 3A — Hero redesign only. Additive utilities, namespaced to the
+   hero, used exclusively by components/sections/Hero.tsx. Nothing above
+   this line was changed, so no other section is affected. */
+.hero-grid-lines {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, .14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, .14) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
