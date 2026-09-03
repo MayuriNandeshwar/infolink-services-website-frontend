@@ -9,12 +9,9 @@ export const phoneSchema = z
   .min(1, { message: 'Mobile number is required.' })
   .regex(INDIAN_MOBILE_REGEX, { message: MOBILE_ERROR_MESSAGE });
 
-// NOTE: field keys (city, property_type, monthly_bill, message) intentionally
-// match the existing `contact_inquiries` Supabase table and /api/contact
-// route so no backend/schema changes are required. Only labels, copy, and
-// validation messages below have been updated for the software lead form —
-// `city` now carries the "Company" value, `property_type` carries "Project
-// Type", and `monthly_bill` carries "Budget Range".
+// Field keys match the simplified `contact_inquiries` table:
+// name, phone, email (all required) + company_name, project_type, budget,
+// message (all optional).
 export const contactFormSchema = z.object({
   name: z
     .string()
@@ -23,23 +20,41 @@ export const contactFormSchema = z.object({
     .max(100, { message: 'Name must be under 100 characters.' })
     .regex(/^[a-zA-Z\s.'-]+$/, { message: 'Name can only contain letters, spaces, and punctuation.' }),
   phone: phoneSchema,
-  city: z.string().trim().min(2, { message: 'Enter your company name.' }).max(100, { message: 'Company name must be under 100 characters.' }),
-  email: z.string().trim().email({ message: 'Enter a valid email address.' }).max(255).optional().or(z.literal('')),
-  property_type: z.string().min(1, { message: 'Select a project type.' }),
-  monthly_bill: z.string().min(1, { message: 'Select your budget range.' }),
-  message: z.string().trim().max(2000, { message: 'Project details must be under 2000 characters.' }).optional().or(z.literal('')),
+  email: z
+    .string()
+    .trim()
+    .min(1, { message: 'Email is required.' })
+    .email({ message: 'Enter a valid email address.' })
+    .max(255, { message: 'Email must be under 255 characters.' }),
+  company_name: z
+    .string()
+    .trim()
+    .max(100, { message: 'Company name must be under 100 characters.' })
+    .optional()
+    .or(z.literal('')),
+  project_type: z.string().optional().or(z.literal('')),
+  budget: z.string().optional().or(z.literal('')),
+  message: z
+    .string()
+    .trim()
+    .max(2000, { message: 'Project details must be under 2000 characters.' })
+    .optional()
+    .or(z.literal('')),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-export const STEP_ONE_FIELDS = ['name', 'phone', 'city'] as const;
+// Step 1 now validates the three required fields (name, phone, email)
+// before letting the user continue — company_name/project_type/budget are
+// optional so they don't need to gate step progression.
+export const STEP_ONE_FIELDS = ['name', 'phone', 'email'] as const;
 
-export const contactInquiryInputSchema = contactFormSchema.extend({
-  consent_given: z.literal(true, {
-    errorMap: () => ({ message: 'Consent is required before we can submit your inquiry.' }),
-  }),
-  marketing_consent: z.boolean().optional().default(false),
-});
+// consent_given / marketing_consent removed — those columns no longer
+// exist on `contact_inquiries`, so this is just an alias of the base
+// schema now. If you still want the ConsentModal to gate submission in
+// the UI, that can stay client-side without being part of the payload
+// sent to /api/contact.
+export const contactInquiryInputSchema = contactFormSchema;
 
 export type ContactInquiryInputValues = z.infer<typeof contactInquiryInputSchema>;
 

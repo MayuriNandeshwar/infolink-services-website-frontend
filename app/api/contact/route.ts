@@ -44,15 +44,11 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
     const { error } = await supabase.from('contact_inquiries').insert({
       name: payload.name,
       phone: payload.phone,
-      email: payload.email || null,
-      city: payload.city || null,
-      property_type: payload.property_type,
-      monthly_bill: payload.monthly_bill,
+      email: payload.email,
+      company_name: payload.company_name || null,
+      project_type: payload.project_type || null,
+      budget: payload.budget || null,
       message: payload.message || null,
-      consent_given: payload.consent_given,
-      marketing_consent: payload.marketing_consent ?? false,
-      source: 'website',
-      status: 'new',
     });
 
     if (error) {

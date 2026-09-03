@@ -6,29 +6,21 @@ export interface ContactInquiry {
   created_at: string;
   name: string;
   phone: string;
-  email: string | null;
-  city: string | null;
-  property_type: string;
-  monthly_bill: string;
+  email: string;
+  company_name: string | null;
+  project_type: string | null;
+  budget: string | null;
   message: string | null;
-  consent_given: boolean;
-  marketing_consent: boolean;
-  source: string;
-  status: ContactInquiryStatus;
 }
-
-export type ContactInquiryStatus = 'new' | 'contacted' | 'qualified' | 'converted' | 'closed';
 
 export interface ContactInquiryInput {
   name: string;
   phone: string;
-  email?: string;
-  city?: string;
-  property_type: string;
-  monthly_bill: string;
+  email: string;
+  company_name?: string;
+  project_type?: string;
+  budget?: string;
   message?: string;
-  consent_given: boolean;
-  marketing_consent?: boolean;
 }
 
 export interface ContactApiSuccessResponse {

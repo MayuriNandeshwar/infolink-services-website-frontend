@@ -392,11 +392,8 @@ export const SERVICE_AREAS = {
     description: 'We take on enterprise and startup projects across Maharashtra on a project-by-project basis — reach out with your details/queries and we will confirm feasibility and timelines.',
   },
 };
-
 // Options for the lead form's "Project Type" select (components/LeadForm.tsx).
-// NOTE: these are bound to the existing `property_type` column in the
-// `contact_inquiries` Supabase table — the field name is unchanged so no
-// backend/API/schema migration is required, only the label and options.
+// Bound to the `project_type` column on `contact_inquiries`.
 export const PROJECT_TYPES = [
   'Custom Software',
   'Web Development',
@@ -407,6 +404,7 @@ export const PROJECT_TYPES = [
   'Cloud Solutions',
   'Other',
 ];
+
 
 // Options for the lead form's "Budget Range" select (components/LeadForm.tsx).
 // NOTE: these are bound to the existing `monthly_bill` column in the

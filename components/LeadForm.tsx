@@ -31,9 +31,7 @@ function getFriendlyErrorMessage(error: unknown): string {
   return 'Unable to submit inquiry. Please try again.';
 }
 
-async function submitContactInquiry(
-  payload: ContactFormValues & { consent_given: true; marketing_consent: boolean }
-): Promise<void> {
+async function submitContactInquiry(payload: ContactFormValues): Promise<void> {
   let response: Response;
   try {
     response = await fetch('/api/contact', {
@@ -82,7 +80,10 @@ export default function LeadForm({ variant = 'card', title, subtitle }: LeadForm
     setConsentOpen(true);
   };
 
-  const handleConfirmedSubmit = async (privacyAccepted: boolean, marketingAccepted: boolean) => {
+  // privacyAccepted/marketingAccepted still gate submission in the UI (via
+  // ConsentModal) but are no longer sent to /api/contact — consent_given
+  // and marketing_consent aren't columns on contact_inquiries anymore.
+  const handleConfirmedSubmit = async (privacyAccepted: boolean, _marketingAccepted: boolean) => {
     if (!privacyAccepted) return;
 
     const values = form.getValues();
@@ -90,11 +91,7 @@ export default function LeadForm({ variant = 'card', title, subtitle }: LeadForm
     setErrorMessage('');
 
     try {
-      await submitContactInquiry({
-        ...values,
-        consent_given: true,
-        marketing_consent: marketingAccepted,
-      });
+      await submitContactInquiry(values);
 
       setStatus('success');
       setConsentOpen(false);
@@ -181,17 +178,18 @@ export default function LeadForm({ variant = 'card', title, subtitle }: LeadForm
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="company">Company *</Label>
+              <Label htmlFor="email">Email Address *</Label>
               <Input
-                id="company"
-                {...form.register('city')}
-                placeholder="Your company name"
+                id="email"
+                type="email"
+                {...form.register('email')}
+                placeholder="you@company.com"
                 className="border-gray-300"
-                aria-invalid={!!form.formState.errors.city}
-                autoComplete="organization"
+                aria-invalid={!!form.formState.errors.email}
+                autoComplete="email"
               />
-              {form.formState.errors.city && (
-                <p className="text-xs text-red-500">{form.formState.errors.city.message}</p>
+              {form.formState.errors.email && (
+                <p className="text-xs text-red-500">{form.formState.errors.email.message}</p>
               )}
             </div>
 
@@ -213,12 +211,31 @@ export default function LeadForm({ variant = 'card', title, subtitle }: LeadForm
 
         {step === 2 && (
           <>
+            <div className="space-y-1.5">
+              <Label htmlFor="company_name">
+                Company Name <span className="text-gray-400 font-normal">(optional)</span>
+              </Label>
+              <Input
+                id="company_name"
+                {...form.register('company_name')}
+                placeholder="Your company name"
+                className="border-gray-300"
+                aria-invalid={!!form.formState.errors.company_name}
+                autoComplete="organization"
+              />
+              {form.formState.errors.company_name && (
+                <p className="text-xs text-red-500">{form.formState.errors.company_name.message}</p>
+              )}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label>Project Type *</Label>
+                <Label>
+                  Project Type <span className="text-gray-400 font-normal">(optional)</span>
+                </Label>
                 <Select
-                  value={form.watch('property_type')}
-                  onValueChange={(v) => form.setValue('property_type', v, { shouldValidate: true })}
+                  value={form.watch('project_type')}
+                  onValueChange={(v) => form.setValue('project_type', v, { shouldValidate: true })}
                 >
                   <SelectTrigger className="border-gray-300">
                     <SelectValue placeholder="Select project type" />
@@ -231,16 +248,18 @@ export default function LeadForm({ variant = 'card', title, subtitle }: LeadForm
                     ))}
                   </SelectContent>
                 </Select>
-                {form.formState.errors.property_type && (
-                  <p className="text-xs text-red-500">{form.formState.errors.property_type.message}</p>
+                {form.formState.errors.project_type && (
+                  <p className="text-xs text-red-500">{form.formState.errors.project_type.message}</p>
                 )}
               </div>
 
               <div className="space-y-1.5">
-                <Label>Budget Range *</Label>
+                <Label>
+                  Budget Range <span className="text-gray-400 font-normal">(optional)</span>
+                </Label>
                 <Select
-                  value={form.watch('monthly_bill')}
-                  onValueChange={(v) => form.setValue('monthly_bill', v, { shouldValidate: true })}
+                  value={form.watch('budget')}
+                  onValueChange={(v) => form.setValue('budget', v, { shouldValidate: true })}
                 >
                   <SelectTrigger className="border-gray-300">
                     <SelectValue placeholder="Select budget range" />
@@ -253,28 +272,10 @@ export default function LeadForm({ variant = 'card', title, subtitle }: LeadForm
                     ))}
                   </SelectContent>
                 </Select>
-                {form.formState.errors.monthly_bill && (
-                  <p className="text-xs text-red-500">{form.formState.errors.monthly_bill.message}</p>
+                {form.formState.errors.budget && (
+                  <p className="text-xs text-red-500">{form.formState.errors.budget.message}</p>
                 )}
               </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <Label htmlFor="email">
-                Email Address <span className="text-gray-400 font-normal">(optional)</span>
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                {...form.register('email')}
-                placeholder="you@company.com"
-                className="border-gray-300"
-                aria-invalid={!!form.formState.errors.email}
-                autoComplete="email"
-              />
-              {form.formState.errors.email && (
-                <p className="text-xs text-red-500">{form.formState.errors.email.message}</p>
-              )}
             </div>
 
             <div className="space-y-1.5">
