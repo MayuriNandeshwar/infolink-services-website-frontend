@@ -3,6 +3,7 @@ export const CONTACT = {
   phoneRaw: '918767109652',
 
   whatsapp: '918624907636',
+  whatsappMessage: 'Hi, I would like to know more about your services.',
 
   email: 'info@infolinkservices.com',
 
