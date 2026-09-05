@@ -14,6 +14,7 @@ const partnerSlides = [
   "/partners/Photo-3.png",
   "/partners/Photo-4.png",
   "/partners/Photo-5.png",
+  "/partners/Photo-6.png",
 ];
 
 export default function TrustedBy() {
