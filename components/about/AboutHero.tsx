@@ -72,7 +72,7 @@ export default function AboutHero() {
 
             <p className="max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">
               Infolink Services was founded in Nagpur in 2010. Over more than a decade
-              we built one of Maharashtra's strongest business networks and today
+              we built one of Maharashtra&apos;s strongest business networks and today
               transform that experience into custom software, ERP, CRM, AI and cloud
               solutions for organizations across India.
             </p>
