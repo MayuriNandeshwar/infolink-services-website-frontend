@@ -179,7 +179,7 @@ export const SERVICES = [
       'Link building',
       'Monthly SEO reporting',
     ],
-    image: '/services/seo-services.jpg',
+    image: '/services/seo-services.png',
   },
   {
     slug: 'google-ads',
@@ -196,7 +196,7 @@ export const SERVICES = [
       'Keyword management',
       'ROI reporting',
     ],
-    image: '/services/google-ads.jpg',
+    image: '/services/google-ads.png',
   },
   {
     slug: 'meta-ads',
@@ -213,7 +213,7 @@ export const SERVICES = [
       'Audience segmentation',
       'Campaign optimization',
     ],
-    image: '/services/meta-ads.jpg',
+    image: '/services/meta-ads.png',
   },
   {
     slug: 'performance-marketing',
@@ -230,7 +230,7 @@ export const SERVICES = [
       'A/B testing',
       'Growth reporting',
     ],
-    image: '/services/performance-marketing.jpg',
+    image: '/services/performance-marketing.png',
   },
   {
     slug: 'social-media-marketing',
@@ -264,7 +264,7 @@ export const SERVICES = [
       'Conversion tracking',
       'Analytics integration',
     ],
-    image: '/services/landing-page.jpg',
+    image: '/services/landing-page-design.png',
   },
   {
     slug: 'graphic-design',
@@ -281,7 +281,7 @@ export const SERVICES = [
       'Banner design',
       'Print assets',
     ],
-    image: '/services/graphic-design.jpg',
+    image: '/services/graphic-design.png',
   },
   {
     slug: 'video-editing',
@@ -298,7 +298,7 @@ export const SERVICES = [
       'Promotional videos',
       'Color grading',
     ],
-    image: '/services/video-editing.jpg',
+    image: '/services/video-editing.png',
   },
   {
     slug: 'data-analytics',
@@ -315,7 +315,7 @@ export const SERVICES = [
       'Trend analysis',
       'KPI monitoring',
     ],
-    image: '/services/data-analytics.jpg',
+    image: '/services/data-analytics.png',
   },
   {
     slug: 'business-intelligence',
@@ -332,7 +332,7 @@ export const SERVICES = [
       'KPI tracking',
       'Data integration',
     ],
-    image: '/services/business-intelligence.jpg',
+    image: '/services/business-intelligence.png',
   },
   {
     slug: 'data-visualization',
@@ -349,7 +349,7 @@ export const SERVICES = [
       'Real-time reporting',
       'Business insights',
     ],
-    image: '/services/data-visualization.jpg',
+    image: '/services/data-visualization.png',
   },
   {
     slug: 'predictive-analytics',
@@ -366,7 +366,7 @@ export const SERVICES = [
       'Trend prediction',
       'Decision support',
     ],
-    image: '/services/predictive-analytics.jpg',
+    image: '/services/predictive-analytics.png',
   },
 
 ];
