@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, CheckCircle2, MessageCircle, Code2, Globe, Smartphone, Database, Users, Sparkles, Cloud, Briefcase, Wrench, PanelTop, Gauge, BadgePercent, Settings, Lightbulb, Palette } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MessageCircle, Code2, Globe, Smartphone, Database, Users, Sparkles, Cloud, Briefcase, Wrench, PanelTop, Gauge, BadgePercent, Settings, Lightbulb, Palette, Search, Megaphone, Brain, } from 'lucide-react';
 import { SERVICES, SUPPORT_SERVICES } from '@/lib/constants';
 import ContactCTA from '@/components/sections/ContactCTA';
 import { getServicesSchema, getBreadcrumbSchema } from '@/lib/structured-data';
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-const iconMap: Record<string, any> = { Code2, Globe, Smartphone, Database, Users, Sparkles, Cloud, Briefcase, Wrench, PanelTop, Gauge, BadgePercent, Settings, Lightbulb, Palette, };
+const iconMap: Record<string, any> = { Code2, Globe, Smartphone, Database, Users, Sparkles, Cloud, Briefcase, Wrench, PanelTop, Gauge, BadgePercent, Settings, Lightbulb, Palette, Search, Megaphone, Brain, };
 
 export default function ServicesPage() {
   const servicesSchema = getServicesSchema();
