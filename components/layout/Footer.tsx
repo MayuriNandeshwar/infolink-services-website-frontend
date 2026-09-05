@@ -3,29 +3,20 @@ import Image from 'next/image';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
 import { CONTACT, NAV_LINKS } from '@/lib/constants';
 
-// Homepage-scoped service list for the footer. Intentionally not sourced
-// from lib/constants SERVICES (that array still powers the existing
-// /services page content, which is outside Phase 1 scope) — this keeps
-// the footer's "Services" column aligned with the new homepage Services
-// section without touching /services itself.
 const FOOTER_SERVICES = [
-  'Custom Software Development',
-  'Web Development',
-  'Mobile App Development',
-  'ERP Solutions',
-  'CRM Solutions',
-  'AI Solutions',
-  'Cloud Solutions',
-  'UI/UX Design',
+  {
+    title: 'Software Development',
+    href: '/services#software-development',
+  },
+  {
+    title: 'Digital Marketing',
+    href: '/services#digital-marketing',
+  },
+  {
+    title: 'Data Analytics',
+    href: '/services#data-analytics',
+  },
 ];
-
-// Additive footer-only navigation. NAV_LINKS (main navbar) is left
-// untouched; these are pages that exist in the app but weren't yet
-// reachable from the footer. Company Gallery is intentionally not
-// listed here — it now lives inside the About page experience
-// (see components/about/OfficeGallery.tsx) and the standalone
-// /company-gallery route is kept only for SEO/deep-linking, not as a
-// footer-promoted destination.
 const COMPANY_LINKS = [
   { label: 'Careers', href: '/careers' },
   { label: 'Job Fairs', href: '/job-fairs' },
@@ -61,6 +52,16 @@ export default function Footer() {
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-all duration-300 hover:border-blue-400 hover:bg-blue-500/10 hover:text-blue-400"
               >
                 <Linkedin className="h-4 w-4" />
+              </a>
+
+              <a
+                href="https://www.facebook.com/share/19bxQfosP7/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-all duration-300 hover:border-blue-500 hover:bg-blue-500/10 hover:text-blue-500"
+              >
+                <Facebook className="h-4 w-4" />
               </a>
 
               <a
@@ -103,11 +104,15 @@ export default function Footer() {
 
           <div>
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Services</h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {FOOTER_SERVICES.map((service) => (
-                <li key={service}>
-                  <Link href="/#services" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    {service}
+                <li key={service.href}>
+                  <Link
+                    href={service.href}
+                    className="group flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                    {service.title}
                   </Link>
                 </li>
               ))}

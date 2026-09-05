@@ -30,7 +30,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Resources', href: '/resources' },
+  // { label: 'Resources', href: '/resources' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
