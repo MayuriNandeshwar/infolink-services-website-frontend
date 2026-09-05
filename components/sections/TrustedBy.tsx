@@ -1,70 +1,69 @@
+"use client";
+
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-const PARTNER_COUNT = 76;
-const PARTNERS = Array.from(
-  { length: PARTNER_COUNT },
-  (_, i) => `/partners/partner-${i + 1}.png`
-);
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-const firstRow = PARTNERS.filter((_, i) => i % 2 === 0);
-const secondRow = PARTNERS.filter((_, i) => i % 2 === 1);
+const partnerSlides = [
+  "/partners/Photo-1.png",
+  "/partners/Photo-2.png",
+  "/partners/Photo-3.png",
+  "/partners/Photo-4.png",
+  "/partners/Photo-5.png",
+];
 
 export default function TrustedBy() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-14 md:py-16">
       <div className="container-custom">
 
         <p className="text-center text-sm font-semibold uppercase tracking-[0.35em] text-[#2563eb]">
           Trusted by 1,000+ Organizations Since 2010
         </p>
+
         <h2 className="mt-3 text-center text-3xl font-bold text-slate-900">
           Trusted by Industry Leaders
         </h2>
 
-        <div className="relative mt-10 overflow-hidden rounded-[32px] border border-blue-900/40 bg-gradient-to-r from-[#081c3a] via-[#102a54] to-[#081c3a] px-8 py-12 shadow-[0_10px_60px_rgba(37,99,235,0.15)]">
+        <div className="mt-12 overflow-hidden rounded-[32px] border border-blue-900/20 bg-gradient-to-r from-[#081c3a] via-[#102a54] to-[#081c3a] p-8 shadow-[0_15px_60px_rgba(37,99,235,0.15)]">
 
-          {/* Glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_70%)]" />
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            spaceBetween={30}
+            slidesPerView={1}
+            loop={true}
+            navigation={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            speed={1000}
+            className="trusted-swiper"
+          >
+            {partnerSlides.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex items-center justify-center">
 
-          {/* Row 1 */}
-          <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="flex min-w-max animate-marquee gap-12">
-              {[...firstRow, ...firstRow].map((src, i) => (
-                <div
-                  key={i}
-                  className="flex h-24 w-52 flex-shrink-0 items-center justify-center"
-                >
                   <Image
-                    src={src}
-                    alt="Partner Logo"
-                    width={220}
-                    height={110}
-                    className="h-auto max-h-16 w-auto object-contain opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100"
+                    src={slide}
+                    alt={`Partner Slide ${index + 1}`}
+                    width={2200}
+                    height={944}
+                    priority={index === 0}
+                    className="h-auto w-full rounded-xl bg-white object-contain"
                   />
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Row 2 */}
-          <div className="relative mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="flex min-w-max animate-marquee-reverse gap-12">
-              {[...secondRow, ...secondRow].map((src, i) => (
-                <div
-                  key={i}
-                  className="flex h-24 w-52 flex-shrink-0 items-center justify-center"
-                >
-                  <Image
-                    src={src}
-                    alt="Partner Logo"
-                    width={220}
-                    height={110}
-                    className="h-auto max-h-16 w-auto object-contain opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100"
-                  />
                 </div>
-              ))}
-            </div>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
         </div>
       </div>

@@ -1,22 +1,18 @@
 export const CONTACT = {
   phone: '+91 87671 09652',
-  phoneRaw: '+91 87671 09652',
-  whatsapp: '+91 86249 07636',
-  whatsappMessage:
-    "Hello Infolink Services, I'd like to know more about your software solutions.",
+  phoneRaw: '918767109652',
+
+  whatsapp: '918624907636',
 
   email: 'info@infolinkservices.com',
 
   address: 'Nagpur, Maharashtra, India',
 
-  fullAddress:
-    'Office 301, 3rd Floor, Infolink Enclave, Behind MSEB Office, Chatrapati Square, Narendra Nagar, Nagpur, Maharashtra 440015',
-
   mapUrl:
-    'https://maps.google.com/?q=INFOLINK+SERVICES+Nagpur',
+    'https://maps.app.goo.gl/1t7gx2sENFMNciUk8',
 
   mapEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.1134879161395!2d79.07830557503365!3d21.108041180561234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf71bf8a7803%3A0x7cb660196d5ac23d!2sINFOLINK%20SERVICES!5e0!3m2!1sen!2sin!4v1788167103785!5m2!1sen!2sin',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.1134874286604!2d79.08088049999998!3d21.108041200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf71bf8a7803%3A0x7cb660196d5ac23d!2sINFOLINK%20SERVICES!5e0!3m2!1sen!2sin!4v1788586209462!5m2!1sen!2sin',
 };
 
 // Context-specific WhatsApp opening messages. Using the right message for
@@ -167,6 +163,7 @@ export const SERVICES = [
     ],
     image: '/services/service_7.png',
   },
+
 ];
 
 export const SUPPORT_SERVICES = [
@@ -405,11 +402,8 @@ export const PROJECT_TYPES = [
   'Other',
 ];
 
-
 // Options for the lead form's "Budget Range" select (components/LeadForm.tsx).
-// NOTE: these are bound to the existing `monthly_bill` column in the
-// `contact_inquiries` Supabase table — the field name is unchanged so no
-// backend/API/schema migration is required, only the label and options.
+// Bound to the `budget` column on `contact_inquiries`.
 export const BUDGET_RANGES = [
   'Under ₹1,00,000',
   '₹1,00,000 - ₹3,00,000',

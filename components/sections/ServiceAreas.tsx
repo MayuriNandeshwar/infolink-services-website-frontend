@@ -11,7 +11,7 @@ export default function ServiceAreas() {
   const areas: Area[] = [SERVICE_AREAS.primary, SERVICE_AREAS.extended];
 
   return (
-    <section className="section-padding section-bg-gray">
+    <section className="section-padding section-bg-gray py-14 md:py-16">
       <div className="container-custom">
         <div className="text-center mb-12">
           <p className="section-label">Where We Work</p>

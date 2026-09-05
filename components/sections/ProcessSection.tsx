@@ -28,7 +28,7 @@ export default function ProcessSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#0A1F44] py-20">
+    <section className="relative overflow-hidden bg-[#0A1F44] py-14 md:py-16">
       <div className="container-custom">
         <motion.div
           initial={reduceMotion ? undefined : 'hidden'}

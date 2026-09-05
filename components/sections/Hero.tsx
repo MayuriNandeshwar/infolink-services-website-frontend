@@ -139,7 +139,7 @@ export default function Hero() {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </button>
               </Link>
-              <a href="#services">
+              <a href="/services">
                 <button className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] px-7 text-base font-medium text-white backdrop-blur-xl transition-colors hover:bg-white/[0.08]">
                   Explore Services
                 </button>

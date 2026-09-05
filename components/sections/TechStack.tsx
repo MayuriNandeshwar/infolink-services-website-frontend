@@ -56,7 +56,7 @@ export default function TechStack() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFC] py-20">
+    <section className="relative overflow-hidden bg-[#F8FAFC] py-14 md:py-16">
 
       {/* Background Glow */}
       <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-100 blur-3xl opacity-50" />

@@ -7,7 +7,7 @@ export default function LeadFormSection() {
   const whatsappUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.consultation);
 
   return (
-    <section id="lead-form" className="relative overflow-hidden scroll-mt-20 bg-gradient-to-r from-[#071B3A] via-[#0B2550] to-[#12386D] py-20 lg:py-20 mb-0">
+    <section id="lead-form" className="relative overflow-hidden scroll-mt-20 bg-gradient-to-r from-[#071B3A] via-[#0B2550] to-[#12386D] py-14 md:py-16 mb-0">
       <div className="glow-subtle top-1/4 right-1/4 w-72 h-72 bg-[#2563EB]" />
 
       <div className="container-custom relative z-10">

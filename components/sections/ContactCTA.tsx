@@ -51,11 +51,15 @@ export default function ContactCTA() {
                 <p className="text-white font-semibold text-sm">Email Us</p>
                 <p className="text-gray-300 text-xs mt-1">{CONTACT.email}</p>
               </a>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5">
-                <MapPin className="h-6 w-6 text-[#2563EB] mb-3" />
-                <p className="text-white font-semibold text-sm">Visit Us</p>
-                <p className="text-gray-300 text-xs mt-1">Nagpur, Maharashtra</p>
-              </div>
+              <a href={CONTACT.mapUrl} target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all block" >
+              <MapPin className="h-6 w-6 text-[#2563EB] mb-3" />
+              <p className="text-white font-semibold text-sm">
+                Visit Us
+              </p>
+              <p className="text-gray-300 text-xs mt-1">
+                Nagpur, Maharashtra
+              </p>
+              </a>
               <Link
                 href="/contact"
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all col-span-1 sm:col-span-2 flex items-center justify-between"

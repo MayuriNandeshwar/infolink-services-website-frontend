@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="lg:col-span-1 space-y-4">
             <span className="inline-flex items-center rounded-lg bg-white px-2.5 py-1.5">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/logo.png"
                 alt="Infolink Services"
                 width={280}
                 height={81}

@@ -7,6 +7,10 @@ import { CONTACT } from './constants';
  * Infolink Services team immediate context on what the lead is asking about.
  */
 export function getWhatsAppUrl(message?: string): string {
-  const text = message && message.trim().length > 0 ? message : CONTACT.whatsappMessage;
-  return `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+  const text =
+    message?.trim() || CONTACT.whatsappMessage;
+
+  const phone = CONTACT.whatsapp.replace(/\D/g, '');
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 }

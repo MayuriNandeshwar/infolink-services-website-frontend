@@ -39,7 +39,7 @@ export default function IndustriesWeServe() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#06152B] py-20">
+    <section className="relative overflow-hidden bg-[#06152B] py-14 md:py-16">
 
       {/* Glow Effects */}
       <div className="absolute left-0 top-0 h-80 w-80 rounded-full bg-blue-600/10 blur-3xl" />

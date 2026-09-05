@@ -48,7 +48,7 @@ const REASONS = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFC] py-20">
+    <section className="relative overflow-hidden bg-[#F8FAFC] py-14 md:py-16">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-blue-100/40 blur-3xl" />

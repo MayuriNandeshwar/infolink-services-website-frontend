@@ -95,12 +95,8 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card-premium flex flex-col gap-3 p-5"
-                >
+                <a href={CONTACT.mapUrl} target="_blank" rel="noopener noreferrer" 
+                   className="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all block" >
                   <div className="icon-chip h-11 w-11">
                     <MapPin className="h-5 w-5 text-white" />
                   </div>
